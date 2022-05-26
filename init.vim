@@ -1,5 +1,3 @@
-" vim-bootstrap 2022-05-26 06:40:16
-
 "*****************************************************************************
 "" Vim-Plug core
 "*****************************************************************************
@@ -12,7 +10,7 @@ endif
 
 let g:vim_bootstrap_langs = "c,go,html,javascript,lua,perl,python,rust,typescript"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
-let g:vim_bootstrap_theme = "molokai"
+let g:vim_bootstrap_theme = "palenight"
 let g:vim_bootstrap_frams = "vuejs"
 
 if !filereadable(vimplug_exists)
@@ -40,8 +38,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
@@ -51,11 +47,26 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'tomasr/molokai'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'justinmk/vim-sneak'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+" lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+" Need to **configure separately**
+
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -69,6 +80,7 @@ if exists('make')
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
+
 "" Vim-Session
 Plug 'xolox/vim-misc'
 
@@ -79,9 +91,16 @@ Plug 'xolox/vim-session'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
+"editorconfig
+Plug 'editorconfig/editorconfig-vim'
+
+" ale
+Plug 'dense-analysis/ale'
 
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
@@ -109,7 +128,7 @@ Plug 'jelera/vim-javascript-syntax'
 " lua
 "" Lua Bundle
 Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-lua-inspect'
+"Plug 'xolox/vim-lua-inspect'
 
 
 " perl
@@ -152,8 +171,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 " vuejs
 Plug 'posva/vim-vue'
 Plug 'leafOfTree/vim-vue-plugin'
-
-
 
 "*****************************************************************************
 "*****************************************************************************
@@ -221,8 +238,16 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme molokai
+set background=dark
+colorscheme palenight
 
+"Configuraciones del tema 
+let g:lightline = { 'colorscheme': 'palenight'}
+let g:airline_theme = "palenight"
+
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Better command line completion 
 set wildmenu
@@ -284,7 +309,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'wombat'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -328,9 +353,9 @@ let Grep_Skip_Dirs = '.git node_modules'
 nnoremap <silent> <leader>sh :terminal<CR>
 
 
-"*****************************************************************************
-"" Commands
-"*****************************************************************************
+" *****************************************************************************
+" Commands
+" " *****************************************************************************
 " remove trailing whitespaces
 command! FixWhitespace :%s/\s\+$//e
 
@@ -345,7 +370,7 @@ if !exists('*s:setupWrapping')
   endfunction
 endif
 
-"*****************************************************************************
+" *****************************************************************************
 "" Autocmd Rules
 "*****************************************************************************
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
