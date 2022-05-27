@@ -53,8 +53,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'justinmk/vim-sneak'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'neovim/nvim-lspconfig'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -308,7 +306,7 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-" vim-airline
+" " vim-airline
 let g:airline_theme = 'wombat'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
@@ -429,7 +427,7 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
-"" Set working directory
+" Set working directggy
 nnoremap <leader>. :lcd %:p:h<CR>
 
 "" Opens an edit command with the path of the currently edited file filled in
