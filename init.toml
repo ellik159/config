@@ -45,6 +45,10 @@ name = 'autocomplete'
   auto_completion_return_key_behavior = "smart"
   auto_completion_tab_key_behavior = "smart"
 
+#fzf
+[[layers]]
+name = "fzf"
+
 
 [[layers]]
   name = 'shell'
@@ -66,14 +70,44 @@ name = 'autocomplete'
 [[layers]]
   name = 'VersionControl# '
 
-#HTML
+# LSP @TODO:Configurar para los idiomas necesarios 
 [[layers]]
-  name="lang#html"
-  emmet_leader_key = "<C-e>"
-  emmet_filetyps = ['html']
+  name = 'lsp'
+  enabled_clients = ['pyright']
 
 #Bookmarks
 [[layers]]
   name = "tools"
 
+###################### Lenguajes ############################
+#HTML
+[[layers]]
+  name="lang#html"
+  emmet_leader_key = "<C-e>"
+
+# Javascript
+[[layers]]
+  name = "lang#javascript"
+  enable_flow_syntax = true
+
+# lua
+[[layers]]
+  name = "lang#lua"
+
+# Markdown
+[[layers]]
+  name = "lang#markdown"
+
+# Python 
+[[layers]]
+  name = "lang#python"
+  enabled_linters = ['python','pylint']
+
+#Typescript
+[[layers]]
+  name = "lang#typescript"
+
+#Vue
+[[layers]]
+  name = "lang#vue"
 
